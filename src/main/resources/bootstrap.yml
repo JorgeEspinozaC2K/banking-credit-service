@@ -8,4 +8,4 @@ spring:
       password: ${security_password}
   data:
       mongodb:
-          uri: mongodb+srv://jespinoza:jest444@jespinoza.is5j4.mongodb.net/customer_data
+          uri: mongodb+srv://jespinoza:jest444@jespinoza.is5j4.mongodb.net/credit_data
