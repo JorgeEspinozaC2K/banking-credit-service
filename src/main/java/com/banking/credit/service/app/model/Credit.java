@@ -32,7 +32,7 @@ public class Credit {
 	
 	private String requestId;
 	
-	private int status;
+	private Integer status;
 	
 	private Boolean fullyPaid = false;
 	
@@ -46,11 +46,11 @@ public class Credit {
 	
 	private Double interestRate = 6.90;
 	
-	private int actualQuota;
+	private Integer actualQuota;
 	
-	private int totalQuotas;
+	private Integer totalQuotas;
 	
-	private int amountPerQuota;
+	private Integer amountPerQuota;
 	
 	private List<Payment> payments;
 	

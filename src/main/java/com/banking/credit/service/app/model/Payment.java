@@ -22,13 +22,13 @@ public class Payment {
 	
 	private String creditId;
 	
-	private int personalIdentifier;
+	private Integer personalIdentifier;
 	
 	private Date paymentDate;
 	
 	private Boolean atTime;
 	
-	private int quota;
+	private Integer quota;
 	
 	private Double quotaAmount;
 	
@@ -44,6 +44,6 @@ public class Payment {
 	
 	private Double remainingAmount;
 	
-	private int remainingQuotas;
+	private Integer remainingQuotas;
 	
 }
