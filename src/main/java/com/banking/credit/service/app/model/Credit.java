@@ -25,6 +25,8 @@ public class Credit {
 	@Id
 	private String id;
 	
+	private Boolean forCard;
+	
 	@Transient
 	private Customer customer;
 	

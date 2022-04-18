@@ -20,6 +20,8 @@ public class Payment {
 	@Id
 	private String id;
 	
+	private String creditId;
+	
 	private int personalIdentifier;
 	
 	private Date paymentDate;
