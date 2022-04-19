@@ -2,6 +2,8 @@ package com.banking.credit.service.app.entity;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Data;
 
 @Data
@@ -12,9 +14,9 @@ public class Customer {
 	private String lastName;
 	private int personalIdentifier;
 	private String email;
-	private boolean legalCustomer = false;
-	private int tributaryIdentifier;
-	private Date createAt = new Date();
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private Date createAt;
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date updateAt;
 	
 }

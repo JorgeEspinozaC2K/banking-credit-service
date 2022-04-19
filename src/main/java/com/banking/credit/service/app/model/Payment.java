@@ -5,6 +5,8 @@ import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +26,7 @@ public class Payment {
 	
 	private Integer personalIdentifier;
 	
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date paymentDate;
 	
 	private Boolean atTime;

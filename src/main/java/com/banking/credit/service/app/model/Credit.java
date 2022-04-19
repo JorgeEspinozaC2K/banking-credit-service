@@ -4,11 +4,10 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.banking.credit.service.app.entity.Customer;
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,12 +26,11 @@ public class Credit {
 	
 	private Boolean forCard;
 	
-	@Transient
+	private String cardNumber;
+	
 	private Customer customer;
 	
 	private String requestId;
-	
-	private Integer status;
 	
 	private Boolean fullyPaid = false;
 	
@@ -50,23 +48,30 @@ public class Credit {
 	
 	private Integer totalQuotas;
 	
-	private Integer amountPerQuota;
+	private Integer remainingQuotas;
 	
 	private List<Payment> payments;
 	
 	private Double nextQuotaAmount;
+    
+	private Double nextMinPaymentAmount;
 	
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date fullyPaymentDate;
 	
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date lastPaymentDate;
 	
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date nextPaymentDate;
 	
 	private Boolean isOnDate;
 	
 	private Double outOfDateInterest = 4.00;
 	
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date lastReview;
 	
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date createAt;
 }
