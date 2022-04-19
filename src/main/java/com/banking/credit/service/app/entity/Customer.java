@@ -13,6 +13,8 @@ public class Customer {
 	private String name;
 	private String lastName;
 	private int personalIdentifier;
+	private Integer tributaryIdentifier;
+	private Boolean isTributary;
 	private String email;
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date createAt;

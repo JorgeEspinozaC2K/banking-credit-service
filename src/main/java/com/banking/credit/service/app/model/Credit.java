@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.banking.credit.service.app.entity.Customer;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
@@ -28,7 +27,7 @@ public class Credit {
 	
 	private String cardNumber;
 	
-	private Customer customer;
+	private String customerId;
 	
 	private String requestId;
 	

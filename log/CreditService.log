@@ -1679,3 +1679,339 @@ Caused by: java.lang.Error: Unresolved compilation problems:
 2022-04-19 16:32:49.456  INFO 24116 --- [cluster-ClusterId{value='625f2a7a3cd884366b7378f9', description='null'}-jespinoza-shard-00-02.is5j4.mongodb.net:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:483, serverValue:169985}] to jespinoza-shard-00-02.is5j4.mongodb.net:27017
 2022-04-19 16:32:49.456  INFO 24116 --- [cluster-ClusterId{value='625f2a7a3cd884366b7378f9', description='null'}-jespinoza-shard-00-02.is5j4.mongodb.net:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=jespinoza-shard-00-02.is5j4.mongodb.net:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=13, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=3452065500, setName='atlas-ob43re-shard-0', canonicalAddress=jespinoza-shard-00-02.is5j4.mongodb.net:27017, hosts=[jespinoza-shard-00-00.is5j4.mongodb.net:27017, jespinoza-shard-00-02.is5j4.mongodb.net:27017, jespinoza-shard-00-01.is5j4.mongodb.net:27017], passives=[], arbiters=[], primary='jespinoza-shard-00-02.is5j4.mongodb.net:27017', tagSet=TagSet{[Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='SA_EAST_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=7fffffff0000000000000003, setVersion=1, topologyVersion=TopologyVersion{processId=6255b38fc0dee849605ed2e2, counter=6}, lastWriteDate=Tue Apr 19 16:32:48 COT 2022, lastUpdateTimeNanos=411231182408200}
 2022-04-19 16:32:49.457  INFO 24116 --- [cluster-ClusterId{value='625f2a7a3cd884366b7378f9', description='null'}-jespinoza-shard-00-02.is5j4.mongodb.net:27017] org.mongodb.driver.cluster               : Setting max election id to 7fffffff0000000000000003 from replica set primary jespinoza-shard-00-02.is5j4.mongodb.net:27017
+2022-04-19 16:32:49.457  INFO 24116 --- [cluster-ClusterId{value='625f2a7a3cd884366b7378f9', description='null'}-jespinoza-shard-00-02.is5j4.mongodb.net:27017] org.mongodb.driver.cluster               : Setting max set version to 1 from replica set primary jespinoza-shard-00-02.is5j4.mongodb.net:27017
+2022-04-19 16:32:49.457  INFO 24116 --- [cluster-ClusterId{value='625f2a7a3cd884366b7378f9', description='null'}-jespinoza-shard-00-02.is5j4.mongodb.net:27017] org.mongodb.driver.cluster               : Discovered replica set primary jespinoza-shard-00-02.is5j4.mongodb.net:27017
+2022-04-19 16:32:49.883  INFO 24116 --- [cluster-rtt-ClusterId{value='625f2a7a3cd884366b7378f9', description='null'}-jespinoza-shard-00-02.is5j4.mongodb.net:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:484, serverValue:169968}] to jespinoza-shard-00-02.is5j4.mongodb.net:27017
+2022-04-19 16:36:18.499  INFO 24116 --- [Thread-1367] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application BANKING-CREDIT-SERVICE with eureka with status DOWN
+2022-04-19 16:36:18.499  INFO 24116 --- [Thread-1367] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1650404178499, current=DOWN, previous=UP]
+2022-04-19 16:36:18.499  INFO 24116 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANKING-CREDIT-SERVICE/LIM-6YYN4M3.usersad.everis.int:banking-credit-service:8084: registering service...
+2022-04-19 16:36:18.515  INFO 24116 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANKING-CREDIT-SERVICE/LIM-6YYN4M3.usersad.everis.int:banking-credit-service:8084 - registration status: 204
+2022-04-19 16:36:22.623  INFO 24116 --- [Thread-1367] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2022-04-19 16:36:25.633  INFO 24116 --- [Thread-1367] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2022-04-19 16:36:25.651  INFO 24116 --- [Thread-1367] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_BANKING-CREDIT-SERVICE/LIM-6YYN4M3.usersad.everis.int:banking-credit-service:8084 - deregister  status: 200
+2022-04-19 16:36:25.652  INFO 24116 --- [Thread-1367] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2022-04-19 16:36:26.243  INFO 24116 --- [restartedMain] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8090
+2022-04-19 16:36:31.532  INFO 24116 --- [restartedMain] c.c.c.ConfigServicePropertySourceLocator : Located environment: name=banking-credit-service, profiles=[default], label=null, version=ba55e7f9e334a84d0a966e0fc8f0ce5321981437, state=null
+2022-04-19 16:36:31.533  INFO 24116 --- [restartedMain] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/JorgeEspinozaC2K/banking-config-data.git/file:C:\Users\jespcana\AppData\Local\Temp\config-repo-7519111749449486124\banking-credit-service.yml'}]
+2022-04-19 16:36:31.542  INFO 24116 --- [restartedMain] .b.c.s.a.BankingCreditServiceApplication : No active profile set, falling back to 1 default profile: "default"
+2022-04-19 16:36:31.679  INFO 24116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive MongoDB repositories in DEFAULT mode.
+2022-04-19 16:36:31.689  INFO 24116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 2 Reactive MongoDB repository interfaces.
+2022-04-19 16:36:31.726  INFO 24116 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=06cfcb90-491c-37c2-a9ed-414d9a8c346d
+2022-04-19 16:36:31.733  INFO 24116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-04-19 16:36:31.734  INFO 24116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-04-19 16:36:31.734  INFO 24116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-04-19 16:36:31.744  WARN 24116 --- [restartedMain] onfigReactiveWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'creditController': Unsatisfied dependency expressed through field 'creditService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'creditServiceImp': Unsatisfied dependency expressed through field 'creditWebclient'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.banking.credit.service.app.webclient.CreditWebClient' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2022-04-19 16:36:31.747  INFO 24116 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-04-19 16:36:31.753 ERROR 24116 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field creditWebclient in com.banking.credit.service.app.service.imp.CreditServiceImp required a bean of type 'com.banking.credit.service.app.webclient.CreditWebClient' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.banking.credit.service.app.webclient.CreditWebClient' in your configuration.
+
+2022-04-19 16:36:35.722  INFO 24116 --- [restartedMain] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8090
+2022-04-19 16:36:37.536  INFO 24116 --- [restartedMain] c.c.c.ConfigServicePropertySourceLocator : Located environment: name=banking-credit-service, profiles=[default], label=null, version=ba55e7f9e334a84d0a966e0fc8f0ce5321981437, state=null
+2022-04-19 16:36:37.536  INFO 24116 --- [restartedMain] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/JorgeEspinozaC2K/banking-config-data.git/file:C:\Users\jespcana\AppData\Local\Temp\config-repo-7519111749449486124\banking-credit-service.yml'}]
+2022-04-19 16:36:37.544  INFO 24116 --- [restartedMain] .b.c.s.a.BankingCreditServiceApplication : No active profile set, falling back to 1 default profile: "default"
+2022-04-19 16:36:37.739  INFO 24116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive MongoDB repositories in DEFAULT mode.
+2022-04-19 16:36:37.750  INFO 24116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 2 Reactive MongoDB repository interfaces.
+2022-04-19 16:36:37.792  INFO 24116 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=06cfcb90-491c-37c2-a9ed-414d9a8c346d
+2022-04-19 16:36:37.800  INFO 24116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-04-19 16:36:37.801  INFO 24116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-04-19 16:36:37.802  INFO 24116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-04-19 16:36:37.818  WARN 24116 --- [restartedMain] onfigReactiveWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'creditController': Unsatisfied dependency expressed through field 'creditService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'creditServiceImp': Unsatisfied dependency expressed through field 'creditWebclient'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.banking.credit.service.app.webclient.CreditWebClient' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2022-04-19 16:36:37.822  INFO 24116 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-04-19 16:36:37.826 ERROR 24116 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field creditWebclient in com.banking.credit.service.app.service.imp.CreditServiceImp required a bean of type 'com.banking.credit.service.app.webclient.CreditWebClient' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.banking.credit.service.app.webclient.CreditWebClient' in your configuration.
+
+2022-04-19 16:45:03.328  INFO 24116 --- [restartedMain] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8090
+2022-04-19 16:45:04.544  INFO 24116 --- [restartedMain] c.c.c.ConfigServicePropertySourceLocator : Located environment: name=banking-credit-service, profiles=[default], label=null, version=ba55e7f9e334a84d0a966e0fc8f0ce5321981437, state=null
+2022-04-19 16:45:04.544  INFO 24116 --- [restartedMain] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/JorgeEspinozaC2K/banking-config-data.git/file:C:\Users\jespcana\AppData\Local\Temp\config-repo-7519111749449486124\banking-credit-service.yml'}]
+2022-04-19 16:45:04.550  INFO 24116 --- [restartedMain] .b.c.s.a.BankingCreditServiceApplication : No active profile set, falling back to 1 default profile: "default"
+2022-04-19 16:45:04.710  INFO 24116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive MongoDB repositories in DEFAULT mode.
+2022-04-19 16:45:04.722  INFO 24116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 2 Reactive MongoDB repository interfaces.
+2022-04-19 16:45:04.771  INFO 24116 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=06cfcb90-491c-37c2-a9ed-414d9a8c346d
+2022-04-19 16:45:04.780  INFO 24116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-04-19 16:45:04.780  INFO 24116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-04-19 16:45:04.780  INFO 24116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-04-19 16:45:04.790  WARN 24116 --- [restartedMain] onfigReactiveWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'creditController': Unsatisfied dependency expressed through field 'creditService'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'creditServiceImp' defined in file [C:\Users\jespcana\Documents\Bootcamp\banking-credit-service\target\classes\com\banking\credit\service\app\service\imp\CreditServiceImp.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.banking.credit.service.app.service.imp.CreditServiceImp]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
+	The method getCustomer() is undefined for the type Credit
+
+2022-04-19 16:45:04.793  INFO 24116 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-04-19 16:45:04.798 ERROR 24116 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'creditController': Unsatisfied dependency expressed through field 'creditService'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'creditServiceImp' defined in file [C:\Users\jespcana\Documents\Bootcamp\banking-credit-service\target\classes\com\banking\credit\service\app\service\imp\CreditServiceImp.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.banking.credit.service.app.service.imp.CreditServiceImp]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
+	The method getCustomer() is undefined for the type Credit
+
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:659) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:639) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:953) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918) ~[spring-context-5.3.18.jar:5.3.18]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.18.jar:5.3.18]
+	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:64) ~[spring-boot-2.6.6.jar:2.6.6]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:740) [spring-boot-2.6.6.jar:2.6.6]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:415) [spring-boot-2.6.6.jar:2.6.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303) [spring-boot-2.6.6.jar:2.6.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1312) [spring-boot-2.6.6.jar:2.6.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301) [spring-boot-2.6.6.jar:2.6.6]
+	at com.banking.credit.service.app.BankingCreditServiceApplication.main(BankingCreditServiceApplication.java:12) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_311]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_311]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_311]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_311]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.6.6.jar:2.6.6]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'creditServiceImp' defined in file [C:\Users\jespcana\Documents\Bootcamp\banking-credit-service\target\classes\com\banking\credit\service\app\service\imp\CreditServiceImp.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.banking.credit.service.app.service.imp.CreditServiceImp]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
+	The method getCustomer() is undefined for the type Credit
+
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1334) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1389) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1309) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:656) ~[spring-beans-5.3.18.jar:5.3.18]
+	... 25 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.banking.credit.service.app.service.imp.CreditServiceImp]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
+	The method getCustomer() is undefined for the type Credit
+
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:224) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1326) ~[spring-beans-5.3.18.jar:5.3.18]
+	... 36 common frames omitted
+Caused by: java.lang.Error: Unresolved compilation problem: 
+	The method getCustomer() is undefined for the type Credit
+
+	at com.banking.credit.service.app.service.imp.CreditServiceImp.<init>(CreditServiceImp.java:146) ~[classes/:na]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.8.0_311]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:1.8.0_311]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.8.0_311]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[na:1.8.0_311]
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:211) ~[spring-beans-5.3.18.jar:5.3.18]
+	... 38 common frames omitted
+
+2022-04-19 16:45:09.905  INFO 24116 --- [restartedMain] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8090
+2022-04-19 16:45:10.977  INFO 24116 --- [restartedMain] c.c.c.ConfigServicePropertySourceLocator : Located environment: name=banking-credit-service, profiles=[default], label=null, version=ba55e7f9e334a84d0a966e0fc8f0ce5321981437, state=null
+2022-04-19 16:45:10.978  INFO 24116 --- [restartedMain] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/JorgeEspinozaC2K/banking-config-data.git/file:C:\Users\jespcana\AppData\Local\Temp\config-repo-7519111749449486124\banking-credit-service.yml'}]
+2022-04-19 16:45:10.985  INFO 24116 --- [restartedMain] .b.c.s.a.BankingCreditServiceApplication : No active profile set, falling back to 1 default profile: "default"
+2022-04-19 16:45:11.187  INFO 24116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive MongoDB repositories in DEFAULT mode.
+2022-04-19 16:45:11.197  INFO 24116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 2 Reactive MongoDB repository interfaces.
+2022-04-19 16:45:11.244  INFO 24116 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=06cfcb90-491c-37c2-a9ed-414d9a8c346d
+2022-04-19 16:45:11.252  INFO 24116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-04-19 16:45:11.252  INFO 24116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-04-19 16:45:11.252  INFO 24116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-04-19 16:45:11.261  WARN 24116 --- [restartedMain] onfigReactiveWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'creditController': Unsatisfied dependency expressed through field 'creditService'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'creditServiceImp' defined in file [C:\Users\jespcana\Documents\Bootcamp\banking-credit-service\target\classes\com\banking\credit\service\app\service\imp\CreditServiceImp.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.banking.credit.service.app.service.imp.CreditServiceImp]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
+	The method getCustomer() is undefined for the type Credit
+
+2022-04-19 16:45:11.264  INFO 24116 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-04-19 16:45:11.268 ERROR 24116 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'creditController': Unsatisfied dependency expressed through field 'creditService'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'creditServiceImp' defined in file [C:\Users\jespcana\Documents\Bootcamp\banking-credit-service\target\classes\com\banking\credit\service\app\service\imp\CreditServiceImp.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.banking.credit.service.app.service.imp.CreditServiceImp]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
+	The method getCustomer() is undefined for the type Credit
+
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:659) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:639) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:953) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918) ~[spring-context-5.3.18.jar:5.3.18]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.18.jar:5.3.18]
+	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:64) ~[spring-boot-2.6.6.jar:2.6.6]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:740) [spring-boot-2.6.6.jar:2.6.6]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:415) [spring-boot-2.6.6.jar:2.6.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303) [spring-boot-2.6.6.jar:2.6.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1312) [spring-boot-2.6.6.jar:2.6.6]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301) [spring-boot-2.6.6.jar:2.6.6]
+	at com.banking.credit.service.app.BankingCreditServiceApplication.main(BankingCreditServiceApplication.java:12) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_311]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_311]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_311]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_311]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.6.6.jar:2.6.6]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'creditServiceImp' defined in file [C:\Users\jespcana\Documents\Bootcamp\banking-credit-service\target\classes\com\banking\credit\service\app\service\imp\CreditServiceImp.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.banking.credit.service.app.service.imp.CreditServiceImp]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
+	The method getCustomer() is undefined for the type Credit
+
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1334) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1389) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1309) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:656) ~[spring-beans-5.3.18.jar:5.3.18]
+	... 25 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.banking.credit.service.app.service.imp.CreditServiceImp]: Constructor threw exception; nested exception is java.lang.Error: Unresolved compilation problem: 
+	The method getCustomer() is undefined for the type Credit
+
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:224) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:87) ~[spring-beans-5.3.18.jar:5.3.18]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1326) ~[spring-beans-5.3.18.jar:5.3.18]
+	... 36 common frames omitted
+Caused by: java.lang.Error: Unresolved compilation problem: 
+	The method getCustomer() is undefined for the type Credit
+
+	at com.banking.credit.service.app.service.imp.CreditServiceImp.<init>(CreditServiceImp.java:146) ~[classes/:na]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:1.8.0_311]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:1.8.0_311]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:1.8.0_311]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[na:1.8.0_311]
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:211) ~[spring-beans-5.3.18.jar:5.3.18]
+	... 38 common frames omitted
+
+2022-04-19 16:47:11.762  INFO 24116 --- [restartedMain] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8090
+2022-04-19 16:47:13.004  INFO 24116 --- [restartedMain] c.c.c.ConfigServicePropertySourceLocator : Located environment: name=banking-credit-service, profiles=[default], label=null, version=ba55e7f9e334a84d0a966e0fc8f0ce5321981437, state=null
+2022-04-19 16:47:13.005  INFO 24116 --- [restartedMain] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/JorgeEspinozaC2K/banking-config-data.git/file:C:\Users\jespcana\AppData\Local\Temp\config-repo-7519111749449486124\banking-credit-service.yml'}]
+2022-04-19 16:47:13.011  INFO 24116 --- [restartedMain] .b.c.s.a.BankingCreditServiceApplication : No active profile set, falling back to 1 default profile: "default"
+2022-04-19 16:47:13.169  INFO 24116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive MongoDB repositories in DEFAULT mode.
+2022-04-19 16:47:13.180  INFO 24116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 2 Reactive MongoDB repository interfaces.
+2022-04-19 16:47:13.219  INFO 24116 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=06cfcb90-491c-37c2-a9ed-414d9a8c346d
+2022-04-19 16:47:13.226  INFO 24116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-04-19 16:47:13.226  INFO 24116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-04-19 16:47:13.226  INFO 24116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-04-19 16:47:13.238  WARN 24116 --- [restartedMain] onfigReactiveWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'creditController': Unsatisfied dependency expressed through field 'creditService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'creditServiceImp': Unsatisfied dependency expressed through field 'creditWebclient'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.banking.credit.service.app.webclient.CreditWebClient' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2022-04-19 16:47:13.241  INFO 24116 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-04-19 16:47:13.245 ERROR 24116 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field creditWebclient in com.banking.credit.service.app.service.imp.CreditServiceImp required a bean of type 'com.banking.credit.service.app.webclient.CreditWebClient' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.banking.credit.service.app.webclient.CreditWebClient' in your configuration.
+
+2022-04-19 16:47:15.178  INFO 24116 --- [restartedMain] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8090
+2022-04-19 16:47:16.302  INFO 24116 --- [restartedMain] c.c.c.ConfigServicePropertySourceLocator : Located environment: name=banking-credit-service, profiles=[default], label=null, version=ba55e7f9e334a84d0a966e0fc8f0ce5321981437, state=null
+2022-04-19 16:47:16.302  INFO 24116 --- [restartedMain] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/JorgeEspinozaC2K/banking-config-data.git/file:C:\Users\jespcana\AppData\Local\Temp\config-repo-7519111749449486124\banking-credit-service.yml'}]
+2022-04-19 16:47:16.309  INFO 24116 --- [restartedMain] .b.c.s.a.BankingCreditServiceApplication : No active profile set, falling back to 1 default profile: "default"
+2022-04-19 16:47:16.454  INFO 24116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive MongoDB repositories in DEFAULT mode.
+2022-04-19 16:47:16.465  INFO 24116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 2 Reactive MongoDB repository interfaces.
+2022-04-19 16:47:16.508  INFO 24116 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=06cfcb90-491c-37c2-a9ed-414d9a8c346d
+2022-04-19 16:47:16.516  INFO 24116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-04-19 16:47:16.517  INFO 24116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-04-19 16:47:16.517  INFO 24116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-04-19 16:47:16.527  WARN 24116 --- [restartedMain] onfigReactiveWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'creditController': Unsatisfied dependency expressed through field 'creditService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'creditServiceImp': Unsatisfied dependency expressed through field 'creditWebclient'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.banking.credit.service.app.webclient.CreditWebClient' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2022-04-19 16:47:16.530  INFO 24116 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-04-19 16:47:16.534 ERROR 24116 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field creditWebclient in com.banking.credit.service.app.service.imp.CreditServiceImp required a bean of type 'com.banking.credit.service.app.webclient.CreditWebClient' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.banking.credit.service.app.webclient.CreditWebClient' in your configuration.
+
+2022-04-19 17:05:23.209  INFO 24116 --- [restartedMain] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8090
+2022-04-19 17:05:24.263  INFO 24116 --- [restartedMain] c.c.c.ConfigServicePropertySourceLocator : Located environment: name=banking-credit-service, profiles=[default], label=null, version=ba55e7f9e334a84d0a966e0fc8f0ce5321981437, state=null
+2022-04-19 17:05:24.263  INFO 24116 --- [restartedMain] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/JorgeEspinozaC2K/banking-config-data.git/file:C:\Users\jespcana\AppData\Local\Temp\config-repo-7519111749449486124\banking-credit-service.yml'}]
+2022-04-19 17:05:24.271  INFO 24116 --- [restartedMain] .b.c.s.a.BankingCreditServiceApplication : No active profile set, falling back to 1 default profile: "default"
+2022-04-19 17:05:24.402  INFO 24116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Reactive MongoDB repositories in DEFAULT mode.
+2022-04-19 17:05:24.413  INFO 24116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 2 Reactive MongoDB repository interfaces.
+2022-04-19 17:05:24.450  INFO 24116 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=06cfcb90-491c-37c2-a9ed-414d9a8c346d
+2022-04-19 17:05:24.458  INFO 24116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-04-19 17:05:24.458  INFO 24116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-04-19 17:05:24.458  INFO 24116 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2022-04-19 17:05:24.472  WARN 24116 --- [restartedMain] onfigReactiveWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'creditController': Unsatisfied dependency expressed through field 'creditService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'creditServiceImp': Unsatisfied dependency expressed through field 'creditWebclient'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.banking.credit.service.app.webclient.CreditWebClient' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2022-04-19 17:05:24.475  INFO 24116 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-04-19 17:05:24.479 ERROR 24116 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field creditWebclient in com.banking.credit.service.app.service.imp.CreditServiceImp required a bean of type 'com.banking.credit.service.app.webclient.CreditWebClient' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.banking.credit.service.app.webclient.CreditWebClient' in your configuration.
+
+2022-04-19 17:06:48.409  INFO 24116 --- [restartedMain] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8090
+2022-04-19 17:06:49.573  INFO 24116 --- [restartedMain] c.c.c.ConfigServicePropertySourceLocator : Located environment: name=banking-credit-service, profiles=[default], label=null, version=ba55e7f9e334a84d0a966e0fc8f0ce5321981437, state=null
+2022-04-19 17:06:49.573  INFO 24116 --- [restartedMain] b.c.PropertySourceBootstrapConfiguration : Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/JorgeEspinozaC2K/banking-config-data.git/file:C:\Users\jespcana\AppData\Local\Temp\config-repo-7519111749449486124\banking-credit-service.yml'}]

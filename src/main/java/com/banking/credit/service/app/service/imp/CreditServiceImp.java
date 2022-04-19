@@ -6,12 +6,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import com.banking.credit.service.app.entity.Customer;
 import com.banking.credit.service.app.model.Credit;
 import com.banking.credit.service.app.model.Payment;
 import com.banking.credit.service.app.repository.CreditRepository;
 import com.banking.credit.service.app.repository.PaymentRepository;
 import com.banking.credit.service.app.service.CreditService;
+import com.banking.credit.service.app.webclient.CreditWebClient;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -21,6 +24,9 @@ public class CreditServiceImp implements CreditService{
 	
 	private static final Logger log = LoggerFactory.getLogger(CreditServiceImp.class);
 
+	@Autowired
+	private CreditWebClient creditWebclient;
+	
 	@Autowired
 	private CreditRepository creditRepository;
 	
@@ -139,7 +145,7 @@ public class CreditServiceImp implements CreditService{
 	@Override
 	public Flux<Credit> findByForCardAndCustomerById(Boolean forCard, String customerId) {
 		return creditRepository.findByForCard(forCard)
-				.filter(c-> c.getCustomer().getId() == customerId )
+				.filter(c-> c.getCustomerId() == customerId )
 				.defaultIfEmpty(new Credit())
 				.flatMap(_credit -> _credit.getId() == null ?
 						Mono.error(new InterruptedException("Response from CREDITS SERVICE empty,maybe because "
@@ -229,7 +235,8 @@ public class CreditServiceImp implements CreditService{
 	}
 
 	@Override
-	public Mono<Credit> save(Credit credit) {
+	public Mono<Credit> save(@RequestBody Credit credit) {
+		Mono<Customer> _customer = creditWebclient.findCustomer(credit.getCustomerId());
 		return creditRepository.save(credit)
 				.onErrorResume(_ex ->{
 					log.error(_ex.getMessage());
