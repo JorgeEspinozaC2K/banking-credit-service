@@ -9,3 +9,19 @@ spring:
   data:
       mongodb:
           uri: mongodb+srv://jespinoza:jest444@jespinoza.is5j4.mongodb.net/credit_data
+
+
+logging:
+ file: 
+   name: log/CreditService.log     
+ pattern:
+   console: "%d [%thread] %-5level %-60logger{40} : %msg%n"
+ logback:
+    rollingpolicy:
+      max-file-size: 1MB   
+      file-name-pattern: log/CreditService.%d{yyyy-MM-dd}.%i.log
+      total-size-cap: 11MB
+      max-history: 10
+      clean-history-on-start: true       
+
+          
