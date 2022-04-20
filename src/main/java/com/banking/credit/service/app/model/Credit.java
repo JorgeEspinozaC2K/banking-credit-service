@@ -37,6 +37,8 @@ public class Credit {
 	
 	private Double totalPaid;
 	
+	private Double remainingLoan;
+	
 	private Boolean activeLoan = false;
 	
 	private Boolean claimedLoan = false;
@@ -45,9 +47,11 @@ public class Credit {
 	
 	private Double interest;
 	
+	//month effective tax
 	private Double met;
 	
-	private Double cfr;
+	//capital restoring factor
+	private Double crf;
 	
 	private Integer actualQuota;
 	
@@ -63,9 +67,6 @@ public class Credit {
 	
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date fullyPaymentDate;
-	
-	@JsonFormat(pattern = "yyyy-MM-dd")
-	private Date lastPaymentDate;
 	
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date nextPaymentDate;
