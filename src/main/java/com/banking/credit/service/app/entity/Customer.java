@@ -12,7 +12,7 @@ public class Customer {
 	private String id;
 	private String name;
 	private String lastName;
-	private int personalIdentifier;
+	private Integer personalIdentifier;
 	private Integer tributaryIdentifier;
 	private Boolean isTributary;
 	private String email;

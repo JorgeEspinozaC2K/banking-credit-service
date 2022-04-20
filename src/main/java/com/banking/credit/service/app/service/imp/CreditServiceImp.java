@@ -269,10 +269,16 @@ public class CreditServiceImp implements CreditService{
 									 		if(credit.getForCard() != false) {
 									 			credit.setForCard(true);
 									 		}
-									 		credit.setNextQuotaAmount(Math.pow((1+credit.getInterestRate()), (credit.getTotalQuotas()/360)));
+									 		credit.setTotalPaid(0.00);			 		
+									 		credit.setMet((Math.pow((1+(credit.getInterestRate()/100)), (30/360))-1));
+									 		credit.setInterest(credit.getMet()*(credit.getTotalLoan()-credit.getTotalPaid()));
+									 		credit.setCfr(
+									 				((credit.getMet()/100) * Math.pow((1+(credit.getMet()/100)),credit.getTotalQuotas())) 
+									 				/ Math.pow((1+(credit.getMet()/100)),credit.getTotalQuotas())-1);
+									 		credit.setNextQuotaAmount(credit.getTotalLoan()*credit.getCfr());
+									 		credit.setNextMinPaymentAmount(credit.getCfr()-credit.getInterest());
 									 		credit.setRemainingQuotas(credit.getTotalQuotas());
 									 		credit.setActualQuota(0);
-									 		credit.setTotalPaid(0.00);
 									 		credit.setUpdateAt(new Date());
 									 		credit.setCreateAt(new Date());
 									 		return creditRepository.save(credit);

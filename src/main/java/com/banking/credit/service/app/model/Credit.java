@@ -43,6 +43,12 @@ public class Credit {
 	
 	private Double interestRate = 6.90;
 	
+	private Double interest;
+	
+	private Double met;
+	
+	private Double cfr;
+	
 	private Integer actualQuota;
 	
 	private Integer totalQuotas;
