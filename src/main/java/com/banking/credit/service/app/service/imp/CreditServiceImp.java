@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.banking.credit.service.app.entity.Customer;
 import com.banking.credit.service.app.model.Credit;
@@ -24,8 +23,7 @@ public class CreditServiceImp implements CreditService{
 	
 	private static final Logger log = LoggerFactory.getLogger(CreditServiceImp.class);
 
-	@Autowired
-	private CreditWebClient creditWebclient;
+	private CreditWebClient creditWebclient = new CreditWebClient();
 	
 	@Autowired
 	private CreditRepository creditRepository;
@@ -235,13 +233,56 @@ public class CreditServiceImp implements CreditService{
 	}
 
 	@Override
-	public Mono<Credit> save(@RequestBody Credit credit) {
-		Mono<Customer> _customer = creditWebclient.findCustomer(credit.getCustomerId());
-		return creditRepository.save(credit)
-				.onErrorResume(_ex ->{
-					log.error(_ex.getMessage());
-					return Mono.empty();
+	public Mono<Credit> save(Credit credit) {
+		
+		if (credit.getId() !=null) {
+			return creditRepository.findById(credit.getId())
+					.defaultIfEmpty(new Credit())
+					.flatMap(_credit ->{
+						if (_credit.getId() == null) {
+							return Mono.error(new InterruptedException("Can't update this credit: Does not exist"));
+						}else {
+							credit.setRequestId(_credit.getRequestId());
+							credit.setCreateAt(_credit.getCreateAt());
+							credit.setCustomerId(_credit.getCustomerId());
+							credit.setForCard(_credit.getForCard());
+							credit.setTotalLoan(_credit.getTotalLoan());
+							credit.setUpdateAt(new Date());
+							return creditRepository.save(credit);
+						}});
+			
+		}else {
+			return creditWebclient.findCustomer(credit.getCustomerId())
+					.defaultIfEmpty(new Customer())
+					.flatMap(_cus -> {
+					if (_cus.getId() == null) {
+						return Mono.error(new InterruptedException("CUSTOMER NOT FOUND OR ERROR INTO THE CUSTOMER SERVICE"));
+					}else {
+						if(!_cus.getIsTributary()) {
+							 return creditRepository.findByForCard(false)
+									 .filter(_total -> _total.getCustomerId() == credit.getCustomerId())
+									 .count().flatMap(c -> {
+									 	if(c > 0){
+									 		return Mono.error(new InterruptedException("Personal customer cant have "
+									 				+ "more than ONE CREDIT"));
+									 	} else {
+									 		if(credit.getForCard() != false) {
+									 			credit.setForCard(true);
+									 		}
+									 		credit.setNextQuotaAmount(Math.pow((1+credit.getInterestRate()), (credit.getTotalQuotas()/360)));
+									 		credit.setRemainingQuotas(credit.getTotalQuotas());
+									 		credit.setActualQuota(0);
+									 		credit.setTotalPaid(0.00);
+									 		credit.setUpdateAt(new Date());
+									 		credit.setCreateAt(new Date());
+									 		return creditRepository.save(credit);
+									 	}});										
+						}else{
+							return creditRepository.save(credit);
+						}
+					}
 				});
+		}		
 	}
 
 	@Override

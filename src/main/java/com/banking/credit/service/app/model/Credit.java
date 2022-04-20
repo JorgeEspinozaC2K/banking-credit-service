@@ -23,7 +23,7 @@ public class Credit {
 	@Id
 	private String id;
 	
-	private Boolean forCard;
+	private Boolean forCard = false;
 	
 	private String cardNumber;
 	
@@ -49,7 +49,7 @@ public class Credit {
 	
 	private Integer remainingQuotas;
 	
-	private List<Payment> payments;
+	private List<String> payments;
 	
 	private Double nextQuotaAmount;
     
@@ -69,7 +69,7 @@ public class Credit {
 	private Double outOfDateInterest = 4.00;
 	
 	@JsonFormat(pattern = "yyyy-MM-dd")
-	private Date lastReview;
+	private Date updateAt;
 	
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date createAt;
