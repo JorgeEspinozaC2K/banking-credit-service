@@ -81,7 +81,7 @@ public class CreditController {
 
 
 	@GetMapping("/active")
-	public Flux<Credit> searchCreditByIsActive(@PathVariable Boolean active){
+	public Flux<Credit> searchCreditByIsActive(Boolean active){
 		return creditService.findByActiveLoan(true);
 	}
 	
