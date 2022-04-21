@@ -3,10 +3,20 @@ package com.banking.credit.service.app.model;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-@Data
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Document(collection = "credits")
 public class Credit {
 	
 	@Id
@@ -48,9 +58,12 @@ public class Credit {
     
 	private Double nextMinPaymentAmount;
 	
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date fullyPaymentDate;
 	
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date updateAt;
 	
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date createAt;
 }
