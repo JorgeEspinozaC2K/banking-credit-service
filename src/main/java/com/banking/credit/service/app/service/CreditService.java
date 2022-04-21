@@ -8,7 +8,7 @@ import com.banking.credit.service.app.model.Credit;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-public interface CreditService extends PaymentService{
+public interface CreditService{
 	
 	public Flux<Credit> findAll();
 	
@@ -17,8 +17,6 @@ public interface CreditService extends PaymentService{
 	public Flux<Credit> findByCustomerById(String customerId);
 	
 	public Flux<Credit> findByActiveLoan(Boolean activeLoan);
-	
-	public Flux<Credit> findByIsOnDate(Boolean isOnDate);
 	
 	public Flux<Credit> findByForCardAndCustomerById(Boolean forCard,String customerId);
 	

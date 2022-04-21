@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.banking.credit.service.app.model.Credit;
-import com.banking.credit.service.app.model.Payment;
 import com.banking.credit.service.app.service.CreditService;
 
 import reactor.core.publisher.Flux;
@@ -84,12 +83,7 @@ public class CreditController {
 	public Mono<Credit> searchCreditByRequestId(@PathVariable String id){
 		return creditService.findByRequestId(id);
 	}
-	
-	@GetMapping("/defaulting/{onDate}")
-	public Flux<Credit> searchCreditByIfDefaulting(@PathVariable Boolean onDate){
-		return creditService.findByIsOnDate(!onDate);
-	}
-	
+
 	@GetMapping("/active")
 	public Flux<Credit> searchCreditByIsActive(@PathVariable Boolean active){
 		return creditService.findByActiveLoan(true);
@@ -103,30 +97,5 @@ public class CreditController {
 	@DeleteMapping("/delete")
 	public Mono<Void> deleteCredit(@RequestBody Credit credit){
 		return creditService.delete(credit);
-	}
-	
-	@GetMapping("/payments")
-	public Flux<Payment> paymentIndex(){
-		return creditService.findAllPyments();
-	}
-	
-	@GetMapping("/payments/cid/{id}")
-	public Flux<Payment> searchPaymentsByCreditId(@PathVariable String id){
-		return creditService.findPaymentByCreditId(id);
-	}
-	
-	@GetMapping("/payments/{id}")
-	public Mono<Payment> searchPaymentByPaymentId(@PathVariable String id){
-		return creditService.findPaymentById(id);
-	}
-	
-	@PostMapping("/payments/save")
-	public Mono<Payment> savePayment(@RequestBody Payment payment){
-		return creditService.savePayment(payment);
-	}
-	
-	@DeleteMapping("/payments/delete")
-	public Mono<Void> deletePayment(@RequestBody Payment payment){
-		return creditService.deletePayment(payment);
 	}
 }

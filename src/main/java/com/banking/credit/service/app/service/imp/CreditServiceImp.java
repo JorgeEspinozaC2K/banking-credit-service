@@ -9,9 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.banking.credit.service.app.entity.Customer;
 import com.banking.credit.service.app.model.Credit;
-import com.banking.credit.service.app.model.Payment;
 import com.banking.credit.service.app.repository.CreditRepository;
-import com.banking.credit.service.app.repository.PaymentRepository;
 import com.banking.credit.service.app.service.CreditService;
 import com.banking.credit.service.app.webclient.CreditWebClient;
 
@@ -27,10 +25,7 @@ public class CreditServiceImp implements CreditService {
 
 	@Autowired
 	private CreditRepository creditRepository;
-
-	@Autowired
-	private PaymentRepository paymentRepository;
-
+	
 	@Override
 	public Flux<Credit> findAll() {
 		return creditRepository.findAll();
@@ -69,20 +64,6 @@ public class CreditServiceImp implements CreditService {
 								? Mono.error(
 										new InterruptedException("Response from CREDITS SERVICE empty, maybe because "
 												+ (activeLoan ? "ACTIVE" : "INACTIVE") + " loans doesn't exist."))
-								: Mono.just(_credit))
-				.onErrorResume(_ex -> {
-					log.error(_ex.getMessage());
-					return Mono.empty();
-				});
-	}
-
-	@Override
-	public Flux<Credit> findByIsOnDate(Boolean isOnDate) {
-		return creditRepository.findByIsOnDate(isOnDate).defaultIfEmpty(new Credit())
-				.flatMap(
-						_credit -> _credit.getId() == null
-								? Mono.error(new InterruptedException("Response from CREDITS SERVICE empty, because "
-										+ (isOnDate ? "" : "DEBTOR'S") + " credits doesn't exist."))
 								: Mono.just(_credit))
 				.onErrorResume(_ex -> {
 					log.error(_ex.getMessage());
@@ -205,7 +186,8 @@ public class CreditServiceImp implements CreditService {
 
 	@Override
 	public Mono<Credit> findById(String id) {
-		return creditRepository.findById(id).defaultIfEmpty(new Credit()).flatMap(_credit -> _credit.getId() == null
+		return creditRepository.findById(id).defaultIfEmpty(new Credit())
+				.flatMap(_credit -> _credit.getId() == null
 				? Mono.error(new InterruptedException("Response from CREDITS SERVICE empty, because "
 						+ "credits with [ID: " + id + "] doesn't exist."))
 				: Mono.just(_credit)).onErrorResume(_ex -> {
@@ -224,14 +206,20 @@ public class CreditServiceImp implements CreditService {
 				} else {
 					credit.setTotalLoan(_credit.getTotalLoan());
 					credit.setRemainingLoan(_credit.getRemainingLoan() - credit.getTotalPaid());
+					credit.setInterest(_credit.getMet() * credit.getRemainingLoan());
 					credit.setNextQuotaAmount(credit.getRemainingLoan() * credit.getCrf());
+					credit.setNextMinPaymentAmount(credit.getRemainingLoan()-credit.getInterest());
 					credit.setRequestId(_credit.getRequestId());
 					credit.setCreateAt(_credit.getCreateAt());
 					credit.setCustomerId(_credit.getCustomerId());
 					credit.setForCard(_credit.getForCard());
 					credit.setUpdateAt(new Date());
+					credit.setCreateAt(_credit.getCreateAt());
 					return creditRepository.save(credit);
 				}
+			}).onErrorResume(_ex ->{
+				log.error(_ex.getMessage());
+				return Mono.empty();
 			});
 
 		} else {
@@ -272,6 +260,9 @@ public class CreditServiceImp implements CreditService {
 						return creditRepository.save(credit);
 					}
 				}
+			}).onErrorResume(_ex ->{
+				log.error(_ex.getMessage());
+				return Mono.empty();
 			});
 		}
 	}
@@ -282,33 +273,6 @@ public class CreditServiceImp implements CreditService {
 			log.error(_ex.getMessage());
 			return Mono.empty();
 		});
-	}
-
-	// Payments section
-
-	@Override
-	public Flux<Payment> findAllPyments() {
-		return paymentRepository.findAll();
-	}
-
-	@Override
-	public Flux<Payment> findPaymentByCreditId(String creditId) {
-		return paymentRepository.findByCreditId(creditId);
-	}
-
-	@Override
-	public Mono<Payment> findPaymentById(String id) {
-		return paymentRepository.findById(id);
-	}
-
-	@Override
-	public Mono<Payment> savePayment(Payment payment) {
-		return paymentRepository.save(payment);
-	}
-
-	@Override
-	public Mono<Void> deletePayment(Payment payment) {
-		return paymentRepository.delete(payment);
 	}
 
 }

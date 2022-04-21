@@ -41,13 +41,6 @@ public interface CreditRepository extends ReactiveMongoRepository<Credit,String>
 	
 	/**
 	 * 
-	 * @param isOnDate
-	 * @return
-	 */
-	public Flux<Credit> findByIsOnDate(Boolean isOnDate);
-	
-	/**
-	 * 
 	 * @param totalLoan
 	 * @return
 	 */
