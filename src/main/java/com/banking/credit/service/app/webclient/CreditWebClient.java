@@ -18,7 +18,7 @@ public class CreditWebClient {
 	public Mono<Customer> findCustomer(String id){
 		return creditWebClient.build()
 				.get()
-				.uri("http://localhost:8082/api/v1/customer/{id}",id)
+				.uri("http://localhost:8080/customer/{id}",id)
 				.retrieve()
 				.bodyToMono(Customer.class);
 	}
@@ -33,7 +33,7 @@ public class CreditWebClient {
 		_card.setCreateAt(new Date());
 		return creditWebClient.build()
 				.post()
-				.uri("http://localhost:8085/api/v1/card/new",_card)
+				.uri("http://localhost:8080/card/new",_card)
 				.retrieve()
 				.bodyToMono(Card.class);
 	}
