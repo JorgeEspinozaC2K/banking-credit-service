@@ -2,20 +2,21 @@ package com.banking.credit.service.app.model;
 
 import java.util.Date;
 
+import org.springframework.data.annotation.Id;
+
 import lombok.Data;
 
 @Data
 public class Credit {
 	
+	@Id
 	private String id;
 	
 	private Boolean forCard = false;
 	
-	private String cardNumber;
+	private Long cardNumber;
 	
 	private String customerId;
-	
-	private String requestId;
 	
 	private Boolean fullyPaid = false;
 	

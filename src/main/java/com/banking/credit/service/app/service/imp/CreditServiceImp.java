@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.banking.credit.service.app.entity.Card;
 import com.banking.credit.service.app.entity.Customer;
 import com.banking.credit.service.app.model.Credit;
 import com.banking.credit.service.app.repository.CreditRepository;
@@ -171,20 +172,6 @@ public class CreditServiceImp implements CreditService {
 	}
 
 	@Override
-	public Mono<Credit> findByRequestId(String requestId) {
-		return creditRepository.findByRequestId(requestId).defaultIfEmpty(new Credit())
-				.flatMap(
-						_credit -> _credit.getId() == null
-								? Mono.error(new InterruptedException("Response from CREDITS SERVICE empty, because "
-										+ "credits with [REQUEST ID: " + requestId + "] doesn't exist."))
-								: Mono.just(_credit))
-				.onErrorResume(_ex -> {
-					log.error(_ex.getMessage());
-					return Mono.empty();
-				});
-	}
-
-	@Override
 	public Mono<Credit> findById(String id) {
 		return creditRepository.findById(id).defaultIfEmpty(new Credit())
 				.flatMap(_credit -> _credit.getId() == null
@@ -198,18 +185,19 @@ public class CreditServiceImp implements CreditService {
 
 	@Override
 	public Mono<Credit> save(Credit credit) {
-
+		
 		if (credit.getId() != null) {
 			return creditRepository.findById(credit.getId()).defaultIfEmpty(new Credit()).flatMap(_credit -> {
 				if (_credit.getId() == null) {
 					return Mono.error(new InterruptedException("Can't update this credit: Does not exist"));
 				} else {
+					credit.setCardNumber(_credit.getCardNumber());
+					credit.setForCard(_credit.getForCard());
 					credit.setTotalLoan(_credit.getTotalLoan());
 					credit.setRemainingLoan(_credit.getRemainingLoan() - credit.getTotalPaid());
 					credit.setInterest(_credit.getMet() * credit.getRemainingLoan());
 					credit.setNextQuotaAmount(credit.getRemainingLoan() * credit.getCrf());
 					credit.setNextMinPaymentAmount(credit.getRemainingLoan()-credit.getInterest());
-					credit.setRequestId(_credit.getRequestId());
 					credit.setCreateAt(_credit.getCreateAt());
 					credit.setCustomerId(_credit.getCustomerId());
 					credit.setForCard(_credit.getForCard());
@@ -228,7 +216,7 @@ public class CreditServiceImp implements CreditService {
 					return Mono
 							.error(new InterruptedException("CUSTOMER NOT FOUND OR ERROR INTO THE CUSTOMER SERVICE"));
 				} else {
-					if (!_cus.getIsTributary()) {
+					if (!_cus.getIsTributary() && !credit.getForCard()) {
 						return creditRepository.findByForCard(false).defaultIfEmpty(new Credit()).flatMap(_data -> {
 							if (_data.getId() == null) {
 								return Mono.error(new InterruptedException("Customer ID: " + _data));
@@ -257,6 +245,50 @@ public class CreditServiceImp implements CreditService {
 							}
 						});
 					} else {
+						
+						if (credit.getForCard()) {
+							Mono<Card> cardo = creditWebclient.createCard(credit.getCardNumber(),credit.getCustomerId())
+									.defaultIfEmpty(new Card())
+									.flatMap(_cr ->{
+										if (_cr.getId()==null) {
+											return Mono.error(new InterruptedException("Error creating a card"));
+										}else {
+											return Mono.just(_cr);
+										}
+									});
+							cardo.flatMap(cd -> {
+								credit.setCardNumber(cd.getCardNumber());
+								credit.setTotalPaid(0.00);
+								credit.setRemainingLoan(credit.getTotalLoan());
+								credit.setMet((Math.pow((1 + (credit.getInterestRate() / 100)), (30 / 360)) - 1));
+								credit.setInterest(credit.getMet() * (credit.getTotalLoan() - credit.getTotalPaid()));
+								credit.setCrf(((credit.getMet() / 100)
+										* Math.pow((1 + (credit.getMet() / 100)), credit.getTotalQuotas()))
+										/ Math.pow((1 + (credit.getMet() / 100)), credit.getTotalQuotas()) - 1);
+								credit.setNextQuotaAmount(credit.getTotalLoan() * credit.getCrf());
+								credit.setNextMinPaymentAmount(credit.getCrf() - credit.getInterest());
+								credit.setRemainingQuotas(credit.getTotalQuotas());
+								credit.setActualQuota(1);
+								credit.setUpdateAt(new Date());
+								credit.setCreateAt(new Date());
+								return creditRepository.save(credit);
+							});
+						}
+						credit.setCardNumber(null);
+						credit.setForCard(false);
+						credit.setTotalPaid(0.00);
+						credit.setRemainingLoan(credit.getTotalLoan());
+						credit.setMet((Math.pow((1 + (credit.getInterestRate() / 100)), (30 / 360)) - 1));
+						credit.setInterest(credit.getMet() * (credit.getTotalLoan() - credit.getTotalPaid()));
+						credit.setCrf(((credit.getMet() / 100)
+								* Math.pow((1 + (credit.getMet() / 100)), credit.getTotalQuotas()))
+								/ Math.pow((1 + (credit.getMet() / 100)), credit.getTotalQuotas()) - 1);
+						credit.setNextQuotaAmount(credit.getTotalLoan() * credit.getCrf());
+						credit.setNextMinPaymentAmount(credit.getCrf() - credit.getInterest());
+						credit.setRemainingQuotas(credit.getTotalQuotas());
+						credit.setActualQuota(1);
+						credit.setUpdateAt(new Date());
+						credit.setCreateAt(new Date());
 						return creditRepository.save(credit);
 					}
 				}
@@ -273,6 +305,20 @@ public class CreditServiceImp implements CreditService {
 			log.error(_ex.getMessage());
 			return Mono.empty();
 		});
+	}
+
+	@Override
+	public Flux<Credit> findByCardNumber(String cardNumber) {
+		return creditRepository.findByCardNumber(cardNumber)
+				.defaultIfEmpty(new Credit())
+				.flatMap(_cbc ->
+					_cbc.getId() == null ?
+							Mono.error(new InterruptedException("Not found")):
+								Flux.just(_cbc))
+				.onErrorResume(_ex ->{
+					log.error(_ex.getMessage());
+					return Flux.empty();
+				});
 	}
 
 }

@@ -14,6 +14,8 @@ public interface CreditService{
 	
 	public Flux<Credit> findByForCard(Boolean forCard);
 	
+	public Flux<Credit> findByCardNumber(String cardNumber);
+	
 	public Flux<Credit> findByCustomerById(String customerId);
 	
 	public Flux<Credit> findByActiveLoan(Boolean activeLoan);
@@ -31,8 +33,6 @@ public interface CreditService{
 	public Flux<Credit> findByCreateAtBefore(Date createAt);
 	
 	public Flux<Credit> findByCreateAtAfter(Date createAt);
-	
-	public Mono<Credit> findByRequestId(String requestId);
 	
 	public Mono<Credit> findById(String id);
 	

@@ -78,11 +78,7 @@ public class CreditController {
 	public Flux<Credit> searchCreditByCreationDateBefore(@PathVariable Date date){
 		return creditService.findByCreateAtBefore(date);
 	}
-	
-	@GetMapping("/request/{id}")
-	public Mono<Credit> searchCreditByRequestId(@PathVariable String id){
-		return creditService.findByRequestId(id);
-	}
+
 
 	@GetMapping("/active")
 	public Flux<Credit> searchCreditByIsActive(@PathVariable Boolean active){

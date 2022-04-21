@@ -7,7 +7,6 @@ import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import com.banking.credit.service.app.model.Credit;
 
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 public interface CreditRepository extends ReactiveMongoRepository<Credit,String>{
 	
@@ -24,13 +23,6 @@ public interface CreditRepository extends ReactiveMongoRepository<Credit,String>
 	 * @return
 	 */
 	public Flux<Credit> findByCustomerId(String customerId);
-	
-	/**
-	 * 
-	 * @param requestId
-	 * @return
-	 */
-	public Mono<Credit> findByRequestId(String requestId);
 	
 	/**
 	 * 
@@ -56,6 +48,8 @@ public interface CreditRepository extends ReactiveMongoRepository<Credit,String>
 	 * @return
 	 */
 	public Flux<Credit> findByCreateAt(Date createAt);
+	
+	public Flux<Credit> findByCardNumber(String cardNumber);
 	
 	public Flux<Credit> findByCreateAtBefore(Date createAt);
 	
