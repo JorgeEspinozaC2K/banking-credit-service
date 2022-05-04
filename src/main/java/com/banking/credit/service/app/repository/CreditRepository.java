@@ -1,6 +1,6 @@
 package com.banking.credit.service.app.repository;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 
@@ -16,6 +16,13 @@ public interface CreditRepository extends ReactiveMongoRepository<Credit,String>
 	 * @return
 	 */
 	public Flux<Credit> findByForCard(Boolean forCard);
+	
+	/**
+	 * 
+	 * @param customerId
+	 * @return
+	 */
+	public Flux<Credit> findTop10ByCardNumberOrderByCreateAtDesc(Long cardNumber);
 	
 	/**
 	 * 
@@ -47,13 +54,13 @@ public interface CreditRepository extends ReactiveMongoRepository<Credit,String>
 	 * @param createAt
 	 * @return
 	 */
-	public Flux<Credit> findByCreateAt(Date createAt);
+	public Flux<Credit> findByCreateAt(LocalDate createAt);
 	
 	public Flux<Credit> findByCardNumber(String cardNumber);
 	
-	public Flux<Credit> findByCreateAtBefore(Date createAt);
+	public Flux<Credit> findByCreateAtBefore(LocalDate createAt);
 	
-	public Flux<Credit> findByCreateAtAfter(Date createAt);
+	public Flux<Credit> findByCreateAtAfter(LocalDate createAt);
 	
 	/**
 	 * 

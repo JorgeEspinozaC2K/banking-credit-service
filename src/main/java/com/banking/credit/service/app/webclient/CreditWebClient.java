@@ -1,6 +1,6 @@
 package com.banking.credit.service.app.webclient;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Random;
 
 import org.springframework.web.reactive.function.client.WebClient;
@@ -23,17 +23,36 @@ public class CreditWebClient {
 				.bodyToMono(Customer.class);
 	}
 	
-	public Mono<Card> createCard(Long cardNumber, String customerId){
+	public Mono<Card> createCard(Long cardNumber, String customerId, Double creditLine){
 		
 		Card _card = new Card();
+		_card.setBaseCreditLine(creditLine);
 		_card.setCustomerId(customerId);
 		_card.setCardNumber(cardNumber);
 		_card.setCcv(Integer.parseInt(String.format("%3d", new Random().nextInt(99999))));
-		_card.setExpiration(new Date());
-		_card.setCreateAt(new Date());
+		_card.setExpiration(LocalDate.now());
+		_card.setCreateAt(LocalDate.now());
 		return creditWebClient.build()
 				.post()
 				.uri("http://localhost:8080/card/new",_card)
+				.retrieve()
+				.bodyToMono(Card.class);
+	}
+	
+	public Mono<Card> updateCustomerCards(Card card) {
+		return creditWebClient
+				.build()
+				.post()
+				.uri("http://localhost:8080/card/update", card)
+				.retrieve()
+				.bodyToMono(Card.class);
+	}
+	
+	public Mono<Card> findCard(Long cardNumber) {
+		return creditWebClient
+				.build()
+				.get()
+				.uri("http://localhost:8080/card/{id}", cardNumber)
 				.retrieve()
 				.bodyToMono(Card.class);
 	}

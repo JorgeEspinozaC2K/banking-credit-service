@@ -1,6 +1,6 @@
 package com.banking.credit.service.app.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -32,9 +32,9 @@ public class Credit {
 	
 	private Double totalLoan;
 	
-	private Double totalPaid;
+	private Double totalPaid = 0.0;
 	
-	private Double remainingLoan;
+	private Double remainingLoan = totalLoan;
 	
 	private Boolean activeLoan = false;
 	
@@ -42,28 +42,36 @@ public class Credit {
 	
 	private Double interestRate = 6.90;
 	
-	private Double interest;
+	private Double met = (Math.pow((1 + (interestRate / 100)), (30 / 360)) - 1);
 	
-	private Double met;
-	
-	private Double crf;
-	
-	private Integer actualQuota;
+	private Double interest = met * (totalLoan - totalPaid);
 	
 	private Integer totalQuotas;
 	
-	private Integer remainingQuotas;
+	private Double crf = ((met / 100)
+			* Math.pow((1 + (met / 100)), totalQuotas))
+			/ Math.pow((1 + (met / 100)), totalQuotas) - 1;
 	
-	private Double nextQuotaAmount;
+	private Integer actualQuota = 1;
+	
+	private Integer remainingQuotas = totalQuotas;
+	
+	private Double nextQuotaAmount = totalLoan * crf;
     
-	private Double nextMinPaymentAmount;
+	private Double nextMinPaymentAmount = crf-interest;
 	
 	@JsonFormat(pattern = "yyyy-MM-dd")
-	private Date fullyPaymentDate;
+	private LocalDate quotaNextPaymentDate;
 	
 	@JsonFormat(pattern = "yyyy-MM-dd")
-	private Date updateAt;
+	private LocalDate quotaLastPaymentDate;
 	
 	@JsonFormat(pattern = "yyyy-MM-dd")
-	private Date createAt;
+	private LocalDate fullyPaymentDate;
+	
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private LocalDate updateAt;
+	
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private LocalDate createAt = LocalDate.now();
 }

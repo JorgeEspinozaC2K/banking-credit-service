@@ -6,5 +6,3 @@ spring:
       uri: http://localhost:8090
       username: ${security_name}
       password: ${security_password}
-
-          

@@ -1,6 +1,6 @@
 package com.banking.credit.service.app.controller;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,6 +34,11 @@ public class CreditController {
 		return creditService.findById(id);
 	}
 	
+	@GetMapping("/lastTen/{cardNumber}")
+	public Flux<Credit> searchTenLast(@PathVariable Long cardNumber){
+		return creditService.findAllTenLast(cardNumber);
+	}
+	
 	@GetMapping("/customer/{customerId}")
 	public Flux<Credit> searchCreditByCustomerId(@PathVariable String customerId){
 		return creditService.findByCustomerById(customerId);
@@ -65,18 +70,23 @@ public class CreditController {
 	}
 	
 	@GetMapping("/created/at/{date}")
-	public Flux<Credit> searchCreditByCreationDate(@PathVariable Date date){
+	public Flux<Credit> searchCreditByCreationDate(@PathVariable LocalDate date){
 		return creditService.findByCreateAt(date);
 	}
 	
 	@GetMapping("/created/after/{date}")
-	public Flux<Credit> searchCreditByCreationDateAfter(@PathVariable Date date){
+	public Flux<Credit> searchCreditByCreationDateAfter(@PathVariable LocalDate date){
 		return creditService.findByCreateAtAfter(date);
 	}
 	
 	@GetMapping("/created/before/{date}")
-	public Flux<Credit> searchCreditByCreationDateBefore(@PathVariable Date date){
+	public Flux<Credit> searchCreditByCreationDateBefore(@PathVariable LocalDate date){
 		return creditService.findByCreateAtBefore(date);
+	}
+	
+	@GetMapping("/created/between/{dateA}/{dateB}")
+	public Flux<Credit> searchCreditByCreationDateBefore(@PathVariable LocalDate dateA,@PathVariable LocalDate dateB){
+		return creditService.findByCreateAtBetween(dateA, dateB);
 	}
 
 
