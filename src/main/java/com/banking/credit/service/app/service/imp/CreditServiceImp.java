@@ -288,19 +288,23 @@ public class CreditServiceImp implements CreditService {
 
 	@Override
 	public Mono<Card> newCreditCard(String customerId, Double creditLine) {
-		return creditWebclient.createCard(cardNumberCreation(0L), customerId, creditLine);
+		
+		return cardNumberCreation(0L).flatMap(cardNumber->{
+			return creditWebclient.createCard(cardNumber, customerId, creditLine);
+		});
 	}
 	
-	public Long cardNumberCreation(Long cardNumber) {
+	public Mono<Long> cardNumberCreation(Long cardNumber) {
 		Long crn = Long.parseLong(String.format("%16d",ThreadLocalRandom.current().nextLong(9999999999999999L)));
 		if (cardNumber == 0L) {
 			return cardNumberCreation(Math.abs(crn));
 		}else {
-			Long cn = creditWebclient.findCard(cardNumber)
+			return creditWebclient.findCard(cardNumber)
 					.defaultIfEmpty(new Card())
-					.block().getCardNumber();
+					.flatMap(card -> card.getId()==null? 
+							Mono.just(cardNumber):
+								cardNumberCreation(Math.abs(crn)));
 			
-			return cn == null ? cn : cardNumberCreation(Math.abs(crn));
 		}
 	}
 	
