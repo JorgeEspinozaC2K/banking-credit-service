@@ -21,8 +21,9 @@ import reactor.core.publisher.Mono;
 public class CreditServiceImp implements CreditService {
 
 	private static final Logger log = LoggerFactory.getLogger(CreditServiceImp.class);
-
-	private CreditWebClient creditWebclient = new CreditWebClient();
+	
+	@Autowired
+	private CreditWebClient creditWebclient;
 
 	@Autowired
 	private CreditRepository creditRepository;
@@ -206,10 +207,8 @@ public class CreditServiceImp implements CreditService {
 						return credit;
 					})
 					.flatMap(cred -> creditRepository.save(cred))
-					.onErrorResume(_ex ->{
-						log.error(_ex.getMessage());
-						return Mono.empty();
-					});
+					.doOnError(_ex->log.error(_ex.getMessage()))
+					.onErrorResume(_ex ->Mono.empty());
 
 		} else {
 			return creditWebclient.findCustomer(credit.getCustomerId())

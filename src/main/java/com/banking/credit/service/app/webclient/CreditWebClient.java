@@ -3,24 +3,35 @@ package com.banking.credit.service.app.webclient;
 import java.time.LocalDate;
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.circuitbreaker.ReactiveCircuitBreaker;
+import org.springframework.cloud.client.circuitbreaker.ReactiveCircuitBreakerFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.reactive.function.client.WebClient.Builder;
 
 import com.banking.credit.service.app.entity.Card;
 import com.banking.credit.service.app.entity.Customer;
 
-import reactor.core.publisher.Mono;;
+import reactor.core.publisher.Mono;
 
+@Service
 public class CreditWebClient {
 	
-	private Builder creditWebClient = WebClient.builder();
+	@SuppressWarnings("rawtypes")
+	@Autowired
+	private ReactiveCircuitBreakerFactory reactiveCircuitBreakerFactory;
 	
 	public Mono<Customer> findCustomer(String id){
-		return creditWebClient.build()
+		return WebClient
+				.create("http://localhost:8080")
 				.get()
-				.uri("http://localhost:8080/customer/{id}",id)
+				.uri("/customer/{id}",id)
 				.retrieve()
-				.bodyToMono(Customer.class);
+				.bodyToMono(Customer.class)
+				.transformDeferred(it -> {
+                    ReactiveCircuitBreaker rcb = reactiveCircuitBreakerFactory.create("customDefaultCB");
+                    return rcb.run(it, throwable -> Mono.empty());
+                });
 	}
 	
 	public Mono<Card> createCard(Long cardNumber, String customerId, Double creditLine){
@@ -32,29 +43,44 @@ public class CreditWebClient {
 		_card.setCcv(Integer.parseInt(String.format("%3d", new Random().nextInt(99999))));
 		_card.setExpiration(LocalDate.now());
 		_card.setCreateAt(LocalDate.now());
-		return creditWebClient.build()
+		return WebClient
+				.create("http://localhost:8080")
 				.post()
-				.uri("http://localhost:8080/card/new",_card)
+				.uri("/card/new")
+				.body(Mono.just(_card),Card.class)
 				.retrieve()
-				.bodyToMono(Card.class);
+				.bodyToMono(Card.class)
+				.transformDeferred(it -> {
+                    ReactiveCircuitBreaker rcb = reactiveCircuitBreakerFactory.create("customDefaultCB");
+                    return rcb.run(it, throwable -> Mono.empty());
+                });
 	}
 	
 	public Mono<Card> updateCustomerCards(Card card) {
-		return creditWebClient
-				.build()
+		return WebClient
+				.create("http://localhost:8080")
 				.post()
-				.uri("http://localhost:8080/card/update", card)
+				.uri("/card/update")
+				.body(Mono.just(card),Card.class)
 				.retrieve()
-				.bodyToMono(Card.class);
+				.bodyToMono(Card.class)
+				.transformDeferred(it -> {
+                    ReactiveCircuitBreaker rcb = reactiveCircuitBreakerFactory.create("customDefaultCB");
+                    return rcb.run(it, throwable -> Mono.empty());
+                });
 	}
 	
 	public Mono<Card> findCard(Long cardNumber) {
-		return creditWebClient
-				.build()
+		return WebClient
+				.create("http://localhost:8080")
 				.get()
-				.uri("http://localhost:8080/card/{id}", cardNumber)
+				.uri("/card/{id}", cardNumber)
 				.retrieve()
-				.bodyToMono(Card.class);
+				.bodyToMono(Card.class)
+				.transformDeferred(it -> {
+                    ReactiveCircuitBreaker rcb = reactiveCircuitBreakerFactory.create("customDefaultCB");
+                    return rcb.run(it, throwable -> Mono.empty());
+                });
 	}
 	
 }
